@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  energy:
+    container_name: localRoot
+    build:
+      context: ./
+    ports:
+      - 3274:3274
