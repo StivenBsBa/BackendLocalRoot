@@ -19,9 +19,9 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: "*",
+    origin: `${process.env.CLIENT_ORIGIN}`,
   }),
-);
+);;
 
 app.get('/status', (req, res) => {
     res.status(200).send({
