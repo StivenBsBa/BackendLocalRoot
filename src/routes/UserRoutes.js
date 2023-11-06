@@ -23,7 +23,7 @@ api.get("/eventos/findbyidEvento/:id", EventosController.findById);
 api.get("/eventos/listEventoscreados/:Usuario", EventosController.findAllcreados);
 api.get("/eventos/listEventosLike/:usuario", EventosController.findAlllike);
 api.delete("/eventos/deleteEvento/:id", EventosController.deleteEventoData);
-// api.delete("/lugares/deletelugareslike/:id", LugaresController.deleteLugarDataLike);
+api.delete("/eventos/deleteEventosLike/", EventosController.deleteeventoDataLike);
 
 api.put("/eventos/updateEvento/:id", EventosController.updateEventoData);
 
@@ -35,8 +35,7 @@ api.get("/lugares/listlugares", LugaresController.findAll);
 api.get("/lugares/findbyidlugares/:id", LugaresController.findById);
 api.get("/lugares/listlugarescreados/:Usuario", LugaresController.findAllcreados);
 api.get("/lugares/listlugaresLike/:usuario", LugaresController.findAlllike);
-
 api.delete("/lugares/deletelugares/:id", LugaresController.deleteLugarData);
-api.delete("/lugares/deletelugareslike/:id", LugaresController.deleteLugarDataLike);
+api.delete("/lugares/deleteLugarLike", LugaresController.deleteLugarDataLike);
 api.put("/lugares/updateLugares/:id", LugaresController.updateLugarData);
 module.exports = api;

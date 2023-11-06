@@ -10,7 +10,8 @@ const {
   deleteEvento,
   updateEvento,
   FindAllEventoscreados,
-  FindAllEventosLike
+  FindAllEventosLike,
+  deleteEventoLike
 } = require("../repository/EventosRepository");
 
 async function create(req, res) {
@@ -73,7 +74,12 @@ async function deleteEventoData(req, res) {
   const response = await deleteEvento(id);
   res.status(response.status).send(response);
 }
-
+async function deleteeventoDataLike(req, res) {
+  const idEventos = req.body.idEventos;
+  const Usuario = req.body.Usuario;
+  const response = await deleteEventoLike({ idEventos: idEventos, Usuario });
+  res.status(response.status).send(response);
+}
 async function updateEventoData(req, res) {
   const id = req.params["id"];
   const body = req.body;
@@ -117,4 +123,5 @@ module.exports = {
   findOneEvento,
   deleteEventoData,
   updateEventoData,
+  deleteeventoDataLike
 };

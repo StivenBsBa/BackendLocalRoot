@@ -43,8 +43,6 @@ module.exports.FindAllLugar = async (sort) => {
 };
 
 
-
-
 module.exports.deleteLugar = async (id) => {
   return new Promise((resolve, reject) => {
     LugarModel.findByIdAndDelete(id)
@@ -63,19 +61,19 @@ module.exports.deleteLugar = async (id) => {
       });
   });
 };
-module.exports.deleteLugarLike = async (id) => {
+module.exports.deleteLugarLike = async ({ idLugares, Usuario }) => {
   return new Promise((resolve, reject) => {
-    LugarModelLike.findByIdAndDelete(id)
+    LugarModelLike.findOneAndRemove({ idLugares, Usuario })
       .then((resp) => {
         Response.status = 200;
-        Response.message = "Registro Eliminado de guardados correctamente";
+        Response.message = "Registro Eliminado de favoritos correctamente";
         Response.result = resp;
         resolve(Response);
       })
       .catch((err) => {
-        console.log("error:", err);
+        console.error("error:", err);
         Response.status = 500;
-        Response.message = "Ocurrio un error en el servidor";
+        Response.message = "Ocurrió un error en el servidor";
         Response.result = err;
         reject(Response);
       });
@@ -150,6 +148,9 @@ module.exports.FindOneLugar = async (id) => {
       });
   });
 };
+
+
+
 
 module.exports.FindAllLugarcreados = async (Usuario) => {
   return new Promise((resolve, reject) => {

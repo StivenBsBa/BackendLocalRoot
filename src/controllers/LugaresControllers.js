@@ -54,19 +54,25 @@ async function findAlllike(req, res) {
 }
 async function findById(req, res) {
   const id = req.params["id"];
+  
   const response = await FindOneLugar(id);
   res.status(response.status).send(response);
 }
+
+
+
 async function deleteLugarData(req, res) {
   const id = req.params["id"];
   const response = await deleteLugar(id);
   res.status(response.status).send(response);
 }
 async function deleteLugarDataLike(req, res) {
-  const id = req.params["id"];
-  const response = await deleteLugarLike(id);
+  const idLugares = req.body.idLugares;
+  const Usuario = req.body.Usuario;
+  const response = await deleteLugarLike({ idLugares, Usuario });
   res.status(response.status).send(response);
 }
+
 
 async function updateLugarData(req, res) {
   const id = req.params["id"];

@@ -97,7 +97,24 @@ module.exports.deleteEvento = async (id) => {
       });
   });
 };
-
+module.exports.deleteEventoLike = async ({ idEventos, Usuario }) => {
+  return new Promise((resolve, reject) => {
+    eventoModelLIke.findOneAndRemove({ idEventos, Usuario })
+      .then((resp) => {
+        Response.status = 200;
+        Response.message = "Registro Eliminado de favoritos correctamente";
+        Response.result = resp;
+        resolve(Response);
+      })
+      .catch((err) => {
+        console.error("error:", err);
+        Response.status = 500;
+        Response.message = "Ocurrió un error en el servidor";
+        Response.result = err;
+        reject(Response);
+      });
+  });
+};
 module.exports.updateEvento = async (id, evento) => {
   return new Promise((resolve, reject) => {
     eventoModel.findOneAndUpdate({ _id: id }, {
