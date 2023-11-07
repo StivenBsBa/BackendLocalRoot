@@ -1,10 +1,8 @@
 const UserModel = require("../models/UsuariosModels");
 const {
   CreateUser,
-  FindAllUser,
   FindOneUser,
   FindOneUsername,
-  deleteUser,
   updateUser,
 } = require("../repository/UserRepository");
 const bcrypt = require("bcrypt-nodejs");
@@ -76,14 +74,7 @@ async function create(req, res) {
   });
 }
 
-async function findAll(req, res) {
-  const sort = req.params["sort"];
 
-  const query = { nombres: sort };
-
-  const response = await FindAllUser(query);
-  res.status(response.status).send(response);
-}
 
 async function findById(req, res) {
   const usuario = req.params["username"];
@@ -185,7 +176,6 @@ async function login(req, res) {
 
 module.exports = {
   create,
-  findAll,
   findById,
   findOneUsuario,
   deleteUserData,
