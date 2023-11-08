@@ -8,39 +8,34 @@ const returnUsers = {
     "message": "Registros Encontrados",
     "result": [
       {
-        "_id": "651dc5e8016dc5b14c0bdda5",
-        "password": "$2a$10$zRiVr9OjycUc/YcDWXF/4elHo7dJglBEAfrJKhfWQ/9rJ252KGP/W",
-        "nombres": "stiven",
-        "apellidos": "barajas",
+        "_id": "6540066e860aa53826cc38f0",
+        "nombres": "Brayan Barajas",
         "email": "brayan@gmail.com",
-        "usuario": "stiven",
+        "usuario": "Stiven",
+        "foto": "https://img.freepik.com/foto-gratis/empresario-masculino-feliz-trabajando-computadora-oficina_637285-6738.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1698796800&semt=ais",
+        "password": "123",
+        "TipoUsuario": "administrador"
       },
       {
-        "_id": "6507ac64016dc5badc0bd4ad",
-        "password": "$2a$10$qPeMksU6eH7952T1sChsBOEJSvNYGsoPl8YXCbq62WsUxix9GtOd2",
-        "nombres": "juan",
-        "apellidos": "quiroga",
-        "email": "mq137267@gmail.com",
-        "usuario": "quiroguin"
+        "_id": "654006bc7aa7a8100d666957",
+        "nombres": "camilo sanchez",
+        "email": "camilo.sanchezb@unac.edu.co",
+        "usuario": "kmiloblanco",
+        "foto": "https://media-bog1-1.cdn.whatsapp.net/v/t61.24694-24/375874911_839381007507264_5933585992185526030_n.jpg?ccb=11-4&oh=01_AdTNLZLH-CTU-eYbpwx17LZd_9ks6PuW9GJMof7DB029Ng&oe=654D03DB&_nc_sid=000000&_nc_cat=103",
+        "password": "123",
+        "TipoUsuario": "administrador"
       },
-      {
-        "_id": "65369802016dc5360d0bde9d",
-        "password": "$2a$10$YujMM0xWAx9ms16R9/3C1./bAfWW/YL1l3XTL6ySIsKhV5Jo4LwxG",
-        "nombres": "juan",
-        "apellidos": "quiroga",
-        "email": "mq137267@gmail.co",
-        "usuario": "juan"
-      }
     ]
 }
 
 const CreateUserMock = {
-    "_id": "651dc5e8016dc5b14c0bdda5",
-    "password": "$2a$10$zRiVr9OjycUc/YcDWXF/4elHo7dJglBEAfrJKhfWQ/9rJ252KGP/W",
-    "nombres": "stiven",
-    "apellidos": "barajas",
+    "_id": "6540066e860aa53826cc38f0",
+    "nombres": "Brayan Barajas",
     "email": "brayan@gmail.com",
-    "usuario": "stiven",
+    "usuario": "Stiven",
+    "foto": "https://img.freepik.com/foto-gratis/empresario-masculino-feliz-trabajando-computadora-oficina_637285-6738.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1698796800&semt=ais",
+    "password": "123",
+    "TipoUsuario": "administrador"
   };
 
 describe("Test Users Repository", ()=>{
