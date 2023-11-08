@@ -44,7 +44,7 @@ module.exports.CreateEventoLike = async (like) => {
 module.exports.FindAllEvento = async (sort) => {
   return new Promise((resolve, reject) => {
     eventoModel.find()
-      .sort(sort)
+     
       .then((resp) => {
         Response.status = 200;
         Response.message = "Registros de los eventos Encontrados";

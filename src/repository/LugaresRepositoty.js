@@ -8,7 +8,7 @@ module.exports.CreateLugar = async (user) => {
       .save()
       .then((resp) => {
         Response.status = 201;
-        Response.message = "Se ha creado el evento Correctamente";
+        Response.message = "Se ha creado el lugar Correctamente";
         Response.result = resp;
         resolve(Response);
       })
@@ -21,11 +21,28 @@ module.exports.CreateLugar = async (user) => {
       });
   });
 };
-
+module.exports.CreateLugarLike = async (like) => {
+  return new Promise((resolve, reject) => {
+    like
+      .save()
+      .then((resp) => {
+        Response.status = 201;
+        Response.message = "Se ha agregado lugar a favoritos Correctamente";
+        Response.result = resp;
+        resolve(Response);
+      })
+      .catch((err) => {
+        console.log("error:", err);
+        Response.status = 500;
+        Response.message = "Ocurrio un error en el servidor";
+        Response.result = err;
+        reject(Response);
+      });
+  });
+};
 module.exports.FindAllLugar = async (sort) => {
   return new Promise((resolve, reject) => {
     LugarModel.find()
-      .sort(sort)
       .then((resp) => {
         Response.status = 200;
         Response.message = "Registros de los eventos Encontrados";
@@ -41,7 +58,24 @@ module.exports.FindAllLugar = async (sort) => {
       });
   });
 };
-
+module.exports.FindOneLugar = async (id) => {
+  return new Promise((resolve, reject) => {
+    LugarModel.findById({ _id: id })
+      .then((resp) => {
+        Response.status = 200;
+        Response.message = "Registros del evento encontrados";
+        Response.result = resp;
+        resolve(Response);
+      })
+      .catch((err) => {
+        console.log("error:", err);
+        Response.status = 500;
+        Response.message = "Ocurrio un error en el servidor";
+        Response.result = err;
+        reject(Response);
+      });
+  });
+};
 
 module.exports.deleteLugar = async (id) => {
   return new Promise((resolve, reject) => {
@@ -111,43 +145,8 @@ module.exports.updateLugar = async (id, lugar) => {
   });
 };
 
-module.exports.CreateLugarLike = async (like) => {
-  return new Promise((resolve, reject) => {
-    like
-      .save()
-      .then((resp) => {
-        Response.status = 201;
-        Response.message = "Se ha agregado lugar a favoritos Correctamente";
-        Response.result = resp;
-        resolve(Response);
-      })
-      .catch((err) => {
-        console.log("error:", err);
-        Response.status = 500;
-        Response.message = "Ocurrio un error en el servidor";
-        Response.result = err;
-        reject(Response);
-      });
-  });
-};
-module.exports.FindOneLugar = async (id) => {
-  return new Promise((resolve, reject) => {
-    LugarModel.findById({ _id: id })
-      .then((resp) => {
-        Response.status = 200;
-        Response.message = "Registros del evento encontrados";
-        Response.result = resp;
-        resolve(Response);
-      })
-      .catch((err) => {
-        console.log("error:", err);
-        Response.status = 500;
-        Response.message = "Ocurrio un error en el servidor";
-        Response.result = err;
-        reject(Response);
-      });
-  });
-};
+
+
 
 
 
