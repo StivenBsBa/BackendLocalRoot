@@ -1,7 +1,7 @@
-const { FindAllUser, CreateUser } = require("../repository/UserRepository");
+const {  } = require("../repository/LugaresRepositoty");
 const { Response } = require("../utils/Response");
-const {  create } = require("../controllers/UsuariosController");
-const { mockRequest, mockResponse } = require("../test/mocks/mocks");
+const { create } = require("../controllers/LugaresControllers");
+const { mockRequest, mockResponse } = require("./mocks/mocks");
 
 jest.mock("../repository/UserRepository.js");
 
@@ -62,12 +62,12 @@ describe("Test Users Controller", () => {
 
 
   it("should data to Controller Create Fail Users", async () => {
-    let user = mockRequest();
-    user.params.password = "123";
-    user.params.nombres = "Brayan Barajas";
-    user.params.email = "brayan@gmail.com";
-    user.params.usuario = "Stiven";
-    user.params.usuario = "administrador";
+    let req = mockRequest();
+    req.params.password = "123";
+    req.params.nombres = "Brayan Barajas";
+    req.params.email = "brayan@gmail.com";
+    req.params.usuario = "Stiven";
+    req.params.usuario = "administrador";
     
 
     const res = mockResponse();
@@ -77,7 +77,7 @@ describe("Test Users Controller", () => {
 
     CreateUser.mockReturnValueOnce(returnUsers);
 
-    const data = await create(user, res);
+    const data = await create(req, res);
     console.log(data);
     expect(res.status).toHaveBeenCalledWith(400);
   });

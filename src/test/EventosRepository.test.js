@@ -282,43 +282,4 @@ describe("Test Eventos", () => {
     expect(expected.status).toBe(200);
   });
 
-  // it("Should FindAllEventoscreados response Fail", async () => {
-  //   const expectedErrorData = { errorMessage: "test error scenario" };
-  //   jest
-  //     .spyOn(eventoModel, "find")
-  //     .mockImplementationOnce(() =>
-  //       Promise.reject(new Error(expectedErrorData))
-  //     );
-
-  //   try {
-  //     await FindAllEventoscreados();
-  //   } catch (error) {
-  //     expect(error.status).toEqual(400);
-  //   }
-  // });
-
-  // it("Should FindAllEventosLike Response ok", async () => {
-  //   jest
-  //     .spyOn(eventoModelLIke, "find")
-  //     .mockReturnValue(Promise.resolve([{ Idevento: "1111" }]));
-  
-  //   const expected = await FindAllEventosLike();
-  //   console.log(expected);
-  //   expect(expected.status).toBe(200);
-  // });
-
-  // it("Should FindAllEventosLike response Fail", async () => {
-  //   const expectedErrorData = { errorMessage: "test error scenario" };
-  //   jest
-  //     .spyOn(eventoModelLIke, "find")
-  //     .mockImplementationOnce(() =>
-  //       Promise.reject(new Error(expectedErrorData))
-  //     );
-
-  //   try {
-  //     await FindAllEventosLike();
-  //   } catch (error) {
-  //     expect(error.status).toEqual(500);
-  //   }
-  // });
 });

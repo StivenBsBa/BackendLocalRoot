@@ -76,7 +76,6 @@ module.exports.FindOneLugar = async (id) => {
       });
   });
 };
-
 module.exports.deleteLugar = async (id) => {
   return new Promise((resolve, reject) => {
     LugarModel.findByIdAndDelete(id)
@@ -113,7 +112,6 @@ module.exports.deleteLugarLike = async ({ idLugares, Usuario }) => {
       });
   });
 };
-
 module.exports.updateLugar = async (id, lugar) => {
   return new Promise((resolve, reject) => {
     LugarModel.findOneAndUpdate(
@@ -144,12 +142,6 @@ module.exports.updateLugar = async (id, lugar) => {
       });
   });
 };
-
-
-
-
-
-
 
 module.exports.FindAllLugarcreados = async (Usuario) => {
   return new Promise((resolve, reject) => {

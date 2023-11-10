@@ -46,12 +46,13 @@ async function findAllcreados(req, res) {
   res.status(response.status).send(response);
 }
 
-async function findAlllike(req, res) {
+async function  findAlllike(req, res) {
   const usuario = req.params["usuario"];
   const query = { Usuario: usuario };
   const response = await FindAllLugarLike(query);
   res.status(response.status).send(response);
 }
+
 async function findById(req, res) {
   const id = req.params["id"];
   
