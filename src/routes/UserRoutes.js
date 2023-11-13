@@ -7,7 +7,6 @@ const api = express.Router();
 // Routes para usuarios
 api.post("/usuarios/loginUser", UsersController.login);
 api.post("/usuarios/createUser", UsersController.create);
-api.get("/usuarios/findbyidUser/:usuario", UsersController.findById);
 api.get("/usuarios/findusername/:username", UsersController.findOneUsuario);
 api.delete("/usuarios/deleteUser/:id", UsersController.deleteUserData);
 api.put("/usuarios/updateUserPassword/:usuario", UsersController.updateUserDataPassword);

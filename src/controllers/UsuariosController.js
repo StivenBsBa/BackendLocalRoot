@@ -1,7 +1,6 @@
 const UserModel = require("../models/UsuariosModels");
 const {
   CreateUser,
-  FindOneUser,
   FindOneUsername,
   updateUser,
 } = require("../repository/UserRepository");
@@ -76,11 +75,6 @@ async function create(req, res) {
 
 
 
-async function findById(req, res) {
-  const usuario = req.params["username"];
-  const response = await FindOneUser(usuario);
-  res.status(response.status).send(response);
-}
 
 async function findOneUsuario(req, res) {
   const username = req.params["username"];
@@ -90,7 +84,7 @@ async function findOneUsuario(req, res) {
 
 async function deleteUserData(req, res) {
   const usuario = req.params["usuario"];
-  const response = await FindOneUser(usuario);
+  const response = await FindOneUsername(usuario);
   res.status(response.status).send(response);
 }
 
@@ -176,7 +170,6 @@ async function login(req, res) {
 
 module.exports = {
   create,
-  findById,
   findOneUsuario,
   deleteUserData,
   updateUserDataPassword,

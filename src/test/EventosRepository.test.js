@@ -10,7 +10,6 @@ const {
   deleteEventoLike,
   updateEvento,
   FindAllEventoscreados,
-  FindAllEventosLike,
 } = require("../repository/EventosRepository");
 
 describe("Test Eventos", () => {
@@ -86,7 +85,9 @@ describe("Test Eventos", () => {
     const result = await CreateEventoLike(eventoLike);
     console.log(result);
     expect(result.status).toBe(201);
-    expect(result.message).toBe("Se ha agregado lugar a favoritos Correctamente");
+    expect(result.message).toBe(
+      "Se ha agregado lugar a favoritos Correctamente"
+    );
   });
 
   it("Shoul CreateEventoLike  response Fail", async () => {
@@ -198,7 +199,6 @@ describe("Test Eventos", () => {
     }
   });
 
-
   it("Shoul deleteEventoLike response ok", async () => {
     const eventoId = "123";
     const evento = { _id: eventoId, name: "User1", usuario: "user1" };
@@ -210,7 +210,9 @@ describe("Test Eventos", () => {
     const result = await deleteEventoLike(eventoId);
 
     expect(result.status).toBe(200);
-    expect(result.message).toBe("Registro Eliminado de favoritos correctamente");
+    expect(result.message).toBe(
+      "Registro Eliminado de favoritos correctamente"
+    );
     expect(result.result).toEqual(evento);
   });
 
@@ -238,7 +240,6 @@ describe("Test Eventos", () => {
     evento.categoria = ["test categoria"];
     evento.costoEntrada = "test costoEntrada";
     evento.imageEvento = "test imageEvento";
-
 
     jest
       .spyOn(eventoModel, "findOneAndUpdate")
@@ -281,5 +282,4 @@ describe("Test Eventos", () => {
     console.log(expected);
     expect(expected.status).toBe(200);
   });
-
 });

@@ -6,7 +6,6 @@ const {
   CreateEventoLike,
   FindAllEvento,
   FindOneEvento,
-  FindOneEventoname,
   deleteEvento,
   updateEvento,
   FindAllEventoscreados,
@@ -51,6 +50,7 @@ async function findById(req, res) {
   const response = await FindOneEvento(id);
   res.status(response.status).send(response);
 }
+
 async function findAllcreados(req, res) {
   const Usuario = req.params["Usuario"];
   const response = await FindAllEventoscreados(Usuario);
@@ -60,12 +60,6 @@ async function findAlllike(req, res) {
   const usuario = req.params["usuario"];
   const query = { Usuario: usuario };
   const response = await FindAllEventosLike(query);
-  res.status(response.status).send(response);
-}
-
-async function findOneEvento(req, res) {
-  const evento = req.params["userevento"];
-  const response = await FindOneEventoname(evento);
   res.status(response.status).send(response);
 }
 
@@ -120,7 +114,6 @@ module.exports = {
   findById,
   findAllcreados,
   findAlllike,
-  findOneEvento,
   deleteEventoData,
   updateEventoData,
   deleteeventoDataLike

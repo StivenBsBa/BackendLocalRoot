@@ -45,7 +45,7 @@ module.exports.FindAllLugar = async (sort) => {
     LugarModel.find()
       .then((resp) => {
         Response.status = 200;
-        Response.message = "Registros de los eventos Encontrados";
+        Response.message = "Registros de los lugares Encontrados";
         Response.result = resp;
         resolve(Response);
       })

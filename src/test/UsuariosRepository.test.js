@@ -54,38 +54,6 @@ describe("Test Usuarios", () => {
     }
   });
 
-  it("Shoul FindOneUser response ok", async () => {
-    const userId = "123";
-    const user = { _id: userId, name: "User1", usuario: "user1" };
-
-    jest
-      .spyOn(UserModel, "findOne")
-      .mockImplementationOnce((userId) => Promise.resolve(user));
-
-    const result = await FindOneUser(userId);
-
-    expect(result.status).toBe(200);
-    expect(result.message).toBe("Registros Encontrados");
-    expect(result.result).toEqual(user);
-  });
-
-  it("Shoul FindOneUser response Fail", async () => {
-    const userId = "123";
-    const expectedErrorData = { errorMessage: "test error scenario" };
-
-    jest
-      .spyOn(UserModel, "findOne")
-      .mockImplementationOnce((userId) =>
-        Promise.reject(new Error(expectedErrorData))
-      );
-
-    try {
-      await FindOneUser(userId);
-    } catch (error) {
-      expect(error.status).toBe(500);
-    }
-  });
-
   it("Shoul FindOneUsername  User response ok", async () => {
     const userId = "123";
     const user = { _id: userId, email: "User1@gmail.com", usuario: "user1" };
