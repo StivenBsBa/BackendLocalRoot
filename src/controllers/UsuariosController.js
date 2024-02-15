@@ -51,7 +51,7 @@ async function create(req, res) {
     return;
   }
 
-  const emailExiste = await FindOneUser(params.email);
+  const emailExiste = await FindOneUsername(params.email);
   if (emailExiste.result) {
     res.status(400).send({ message: "El Email ya existe" });
     return;
