@@ -1,8 +1,10 @@
 const UserModel = require("../models/UsuariosModels");
 const {
   CreateUser,
+  FindAllUser,
   FindOneUsername,
   updateUser,
+  FindIdUser
 } = require("../repository/UserRepository");
 const bcrypt = require("bcrypt-nodejs");
 
@@ -10,10 +12,6 @@ async function create(req, res) {
   const params = req.body;
   const user = new UserModel();
 
-  if (params.TipoUsuario == "" || params.TipoUsuario == undefined) {
-    res.status(400).send({ message: "campo de categoria requerido es Requerido" });
-    return;
-  }
   if (params.nombres == "" || params.nombres == undefined) {
     res.status(400).send({ message: "El nombre es Requerido" });
     return;
@@ -60,7 +58,7 @@ async function create(req, res) {
   //Encriptar
   bcrypt.hash(params.password, null, null, async function (err, hash) {
     if (hash) {
-      user.TipoUsuario = params.TipoUsuario;
+      user.TipoUsuario = "Cliente";
       user.nombres = params.nombres;
       user.email = params.email;
       user.usuario = params.usuario;
@@ -73,8 +71,12 @@ async function create(req, res) {
   });
 }
 
-
-
+async function findAll(req, res) {
+  const sort = req.params["sort"];
+  const query = { nombres: sort };
+  const response = await FindAllUser(query);
+  res.status(response.status).send(response);
+}
 
 async function findOneUsuario(req, res) {
   const username = req.params["username"];
@@ -125,7 +127,7 @@ async function updateUserData(req, res) {
       return;
     }
 
-    const emailExiste = await FindOneUser(params.email);
+    const emailExiste = await FindOneUsername(params.email);
     if (emailExiste.result) {
       res.status(400).send({ message: "El Email ya existe" });
       return;
@@ -168,11 +170,19 @@ async function login(req, res) {
   }
 }
 
+async function findById(req, res) {
+  const id = req.params["id"];
+  const response = await FindIdUser(id);
+  res.status(response.status).send(response);
+}
+
 module.exports = {
   create,
+  findAll,
   findOneUsuario,
   deleteUserData,
   updateUserDataPassword,
   updateUserData,
   login,
+  findById
 };
