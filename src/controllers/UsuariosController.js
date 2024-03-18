@@ -79,8 +79,8 @@ async function findAll(req, res) {
 }
 
 async function findOneUsuario(req, res) {
-  const username = req.params["username"];
-  const response = await FindOneUsername(username);
+  const usuario = req.params["username"];
+  const response = await FindOneUsername(usuario);
   res.status(response.status).send(response);
 }
 
