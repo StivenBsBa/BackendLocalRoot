@@ -110,6 +110,9 @@ async function updateUserDataPassword(req, res) {
     res.status(400).send({ message: "Usuario  Invalido" });
   }
 }
+
+
+
 async function updateUserData(req, res) {
   const params = req.body;
   const userExiste = await FindOneUsername(params.usuario);
@@ -142,6 +145,21 @@ async function updateUserData(req, res) {
     user.usuario = body.usuario;
 
     user.foto = body.foto;
+    const response = await updateUser(usuario, user);
+    res.status(response.status).send(response);
+  } else {
+    res.status(400).send({ message: "Usuario  Invalido" });
+  }
+}
+async function updateTipoUser(req, res) {
+  const params = req.body;
+  const userExiste = await FindOneUsername(params.usuario);
+  if (userExiste.result) {
+    const usuario = req.params["usuario"];
+    const body = req.body;
+
+    let user = new UserModel();
+    user.TipoUsuario = body.TipoUsuario;
     const response = await updateUser(usuario, user);
     res.status(response.status).send(response);
   } else {
@@ -184,5 +202,6 @@ module.exports = {
   updateUserDataPassword,
   updateUserData,
   login,
-  findById
+  findById,
+  updateTipoUser
 };

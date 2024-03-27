@@ -85,6 +85,7 @@ module.exports.updateUser = async (usuario, user) => {
         email: user.email,
         usuario: user.usuario,
         password: user.password,
+        TipoUsuario: user.TipoUsuario,
         foto: user.foto,
       }
     )

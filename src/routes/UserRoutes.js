@@ -12,6 +12,7 @@ api.get("/usuarios/findusername/:username", UsersController.findOneUsuario);
 api.delete("/usuarios/deleteUser/:id", UsersController.deleteUserData);
 api.put("/usuarios/updateUserPassword/:usuario", UsersController.updateUserDataPassword);
 api.put("/usuarios/updateUser/:usuario", UsersController.updateUserData);
+api.put("/usuarios/updateTipoUser/:usuario", UsersController.updateTipoUser);
 api.get("/usuarios/findbyidUser/:id", UsersController.findById);
 
 
