@@ -30,12 +30,15 @@ app.get('/status', (req, res) => {
 });
 
 // Conexion a base de datos
-const MONGODB_URI = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.MONGO_DB}`;
+const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`;
 
 mongoose
   .connect(MONGODB_URI, {
-    useUnifiedTopology: true,
     useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: process.env.MONGO_DB, // Nombre de la base de datos
+    authSource: 'admin', // Opcional: Si utilizas MongoDB Atlas con autenticación SCRAM-SHA-1
+    authMechanism: process.env.DB_MECHANISM // Opcional: Si utilizas MongoDB Atlas con autenticación SCRAM-SHA-1
   })
   .then(() => {
     console.log("Base de Datos Conectada");
@@ -46,8 +49,7 @@ mongoose
   });
 
 // Setting Routes
-app.use("/api", UsuariosRoutes);
+app.use("/api", UsuariosRoutes);  
 
 // Export
 module.exports = app;
-
