@@ -22,7 +22,7 @@ module.exports.CreateUser = async (user) => {
 };
 module.exports.FindAllUser = async (sort) =>{
   return new Promise((resolve, reject) => {
-      UserModel.find()
+      UserModel.find({ TipoUsuario: { $ne: "SuperAdministrador" } })
       .then((resp)=>{
           Response.status = 200;
           Response.message = "Registros Encontrados";
@@ -55,8 +55,8 @@ module.exports.FindIdUser = async (id) => {
         reject(Response);
       });
   });
-};
-
+}; 
+ 
 module.exports.FindOneUsername = async (usuario) => {
   return new Promise((resolve, reject) => {
     UserModel.findOne({ usuario: usuario })
@@ -92,6 +92,24 @@ module.exports.updateUser = async (usuario, user) => {
       .then((resp) => {
         Response.status = 200;
         Response.message = "Registro Actualizado correctamente";
+        Response.result = resp;
+        resolve(Response);
+      })
+      .catch((err) => {
+        console.log("error:", err);
+        Response.status = 500;
+        Response.message = "Ocurrio un error en el servidor";
+        Response.result = err;
+        reject(Response);
+      });
+  });
+};
+module.exports.deleteuser = async (usuario) => {
+  return new Promise((resolve, reject) => {
+    UserModel.findOneAndDelete({usuario: usuario})
+      .then((resp) => {
+        Response.status = 200;
+        Response.message = "Registro Eliminado correctamente";
         Response.result = resp;
         resolve(Response);
       })

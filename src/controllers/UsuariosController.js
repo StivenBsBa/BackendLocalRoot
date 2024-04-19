@@ -4,7 +4,8 @@ const {
   FindAllUser,
   FindOneUsername,
   updateUser,
-  FindIdUser
+  FindIdUser,
+  deleteuser
 } = require("../repository/UserRepository");
 const bcrypt = require("bcrypt-nodejs");
 
@@ -73,7 +74,7 @@ async function create(req, res) {
 
 async function findAll(req, res) {
   const sort = req.params["sort"];
-  const query = { nombres: sort };
+  const query = { nombres: req };
   const response = await FindAllUser(query);
   res.status(response.status).send(response);
 }
@@ -86,7 +87,7 @@ async function findOneUsuario(req, res) {
 
 async function deleteUserData(req, res) {
   const usuario = req.params["usuario"];
-  const response = await FindOneUsername(usuario);
+  const response = await deleteuser(usuario);
   res.status(response.status).send(response);
 }
 

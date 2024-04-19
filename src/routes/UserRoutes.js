@@ -9,12 +9,11 @@ api.post("/usuarios/loginUser", UsersController.login);
 api.post("/usuarios/createUser", UsersController.create);
 api.get("/usuarios/listUser", UsersController.findAll);
 api.get("/usuarios/findusername/:username", UsersController.findOneUsuario);
-api.delete("/usuarios/deleteUser/:id", UsersController.deleteUserData);
+api.delete("/usuarios/deleteUser/:usuario", UsersController.deleteUserData);
 api.put("/usuarios/updateUserPassword/:usuario", UsersController.updateUserDataPassword);
 api.put("/usuarios/updateUser/:usuario", UsersController.updateUserData);
 api.put("/usuarios/updateTipoUser/:usuario", UsersController.updateTipoUser);
 api.get("/usuarios/findbyidUser/:id", UsersController.findById);
-
 
 // Routes para crear eventos
 api.post("/eventos/createEvento", EventosController.create);
